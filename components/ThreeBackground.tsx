@@ -1,5 +1,7 @@
 "use client";
 
+import type * as ThreeTypes from "three";
+
 import { useEffect, useRef } from "react";
 
 export default function ThreeBackground() {
@@ -38,7 +40,7 @@ export default function ThreeBackground() {
         new THREE.Vector3(0.8, -0.8, -0.3),
       ];
 
-      const nodeMeshes: THREE.Mesh[] = [];
+      const nodeMeshes: ThreeTypes.Mesh[] = [];
 
       // Nodes: small core + halo
       nodePositions.forEach((pos, i) => {
@@ -139,7 +141,7 @@ export default function ThreeBackground() {
           const phase = (i / nodeMeshes.length) * Math.PI * 2;
           const s = 1 + Math.sin(t * 0.7 + phase) * 0.08;
           halo.scale.setScalar(s);
-          (halo.material as THREE.MeshBasicMaterial).opacity = 0.06 + Math.sin(t * 0.7 + phase) * 0.02;
+          (halo.material as ThreeTypes.MeshBasicMaterial).opacity = 0.06 + Math.sin(t * 0.7 + phase) * 0.02;
         });
 
         renderer.render(scene, camera);
