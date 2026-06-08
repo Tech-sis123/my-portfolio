@@ -1,6 +1,6 @@
 export const stats = [
   { n: "5+", label: "Hackathons Won" },
-  { n: "5", label: "Papers Published" },
+  { n: "5+", label: "Papers Written" },
   { n: "15+", label: "Projects Shipped" },
   { n: "4", label: "Domains of Expertise" },
   { n: "10+", label: "Awards & Honors" },
@@ -39,6 +39,9 @@ export const projects = [
   { title: "GenDoc", subtitle: "Predictive Maintenance for Residential Generators", domains: ["research", "backend"] as const, desc: "Python DSP system for acoustic-signal-based generator health monitoring. Published, UNILAG EEG 213.", github: "https://github.com/Tech-sis123/GenDoc", liveUrl: "https://gendoc.streamlit.app/" },
   { title: "My-Baby", subtitle: "Maternal Health Companion", domains: ["backend", "project"] as const, desc: "A continuous maternal-child health companion for Nigerian mothers. Daily check-ins, rule-based clinical flagging, and a real-time doctor dashboard that catches warning signs between antenatal visits.", github: "https://github.com/Tech-sis123/My-baby", liveUrl: "https://my-baby-vdhh.vercel.app/", hideOnHome: true },
   { title: "RegiScan", subtitle: "OCR Class Register Scanner", domains: ["backend", "project"] as const, desc: "A Flask web app that uses Azure AI Document Intelligence for OCR to digitize paper class registers and exports attendance directly to Google Sheets.", github: "https://github.com/Tech-sis123/regiscan", liveUrl: "" },
+  { title: "Load Priority Controller (LPC) — Tiny Tapeout ASIC", subtitle: "Verilog · OpenLane · cocotb", domains: ["hardware"] as const, desc: "FSM-based ASIC for deterministic power budget management and load shedding. Designed in Verilog, verified with cocotb, and submitted for fabrication on the SkyWater SKY130 node via Tiny Tapeout.", github: "https://github.com/Tech-sis123/IEEE_Open-silicon_initiative_Load_Priority_Controller", liveUrl: "" },
+  { title: "PERSONA", subtitle: "Agentic Multi-Step Retrieval", domains: ["research", "backend", "project"] as const, desc: "Deliberative preference-aware recommendation via agentic multi-step retrieval. Built for DSN × BCT LLM Agent Challenge.", github: "https://github.com/Techdee1/Persona", liveUrl: "https://persona-eight-flax.vercel.app/" },
+  { title: "EthnoLedger", subtitle: "USSD-Blockchain Protocol", domains: ["research"] as const, desc: "A decentralized protocol for securing indigenous knowledge and enabling data sovereignty against biopiracy using USSD and blockchain technology.", github: "", liveUrl: "", hideOnHome: true },
 ];
 
 export const leadership = [
@@ -46,7 +49,7 @@ export const leadership = [
   { role: "Technical Lead · Operations", org: "Becoming Her 2.0 · IDENA Webinar", desc: "Tech & ops lead for the women-in-STEM webinar series." },
   { role: "Assistant Vice secretary", org: "IEEE UNILAG Student Branch", desc: "Supporting the General Secretary in executive workflow, correspondence, and operational management of the UNILAG IEEE student community." },
   { role: "Welfare secretary", org: "APWEN UNILAG", desc: "Managing member wellbeing and welfare initiatives for the Association of Professional Women Engineers, UNILAG chapter." },
-  { role: "Lead Student Ambassador · Co-founder", org: "CapTech UNILAG", desc: "Co-founded and lead the student ambassador program, driving technical initiatives and community engagement." },
+  { role: "Lead Student Ambassador", org: "CapTech UNILAG", desc: "Lead the student ambassador program, driving technical initiatives and community engagement." },
 ];
 
 export const awards = [
@@ -64,10 +67,11 @@ export const awards = [
 ];
 
 export const papers = [
-  { title: "Predictive Maintenance for Residential Generators using Acoustic Signal Analysis", venue: "UNILAG / EEG 213", year: "2026" },
-  { title: "A Phased Open-Source SCADA Framework", venue: "Presentation", year: "2025" },
-  { title: "Female Attrition in African Petroleum Engineering: A Dual-Stage ML Framework", venue: "STSE", year: "2026" },
-  { title: "EthnoLedger: A USSD-Blockchain Protocol for Indigenous Knowledge Protection", venue: "DeSci Lagos", year: "2025" },
+  { title: "Predictive Maintenance for Residential Generators using Acoustic Signal Analysis", venue: "UNILAG / EEG 213", year: "2026", link: "https://docs.google.com/document/d/1sRTQSl600Ku-MPEcIaUKeIVTQMHEfasD/edit?usp=sharing&ouid=108774528082396639161&rtpof=true&sd=true" },
+  { title: "A Phased Open-Source SCADA Framework", venue: "Presentation", year: "2025", link: "https://docs.google.com/document/d/1PiPpgUOmZvTAbGaPtRajlozw13T0ph78lsprA3Qx3VA/edit?usp=sharing" },
+  { title: "Female Attrition in African Petroleum Engineering: A Dual-Stage ML Framework", venue: "STSE", year: "2026", link: "https://docs.google.com/document/d/1XjS0eKoAIJHnxSouf2Y4h_YGkSpFPKpq/edit?usp=sharing&ouid=108774528082396639161&rtpof=true&sd=true" },
+  { title: "EthnoLedger: A USSD-Blockchain Protocol for Indigenous Knowledge Protection", venue: "DeSci Lagos", year: "2025", link: "https://docs.google.com/document/d/14fA4vpgSIt0EDC8JNyDvLSzeoTbkYRgS/edit?usp=sharing&ouid=108774528082396639161&rtpof=true&sd=true" },
+  { title: "PERSONA: Deliberative Preference-Aware Recommendation via Agentic Multi-Step Retrieval", venue: "DSN × BCT", year: "2026", link: "https://docs.google.com/document/d/1bDC74_Oxo8d1wyHdRIKtQk6Oj5jsPgmPk_-i99NRKJ8/edit?usp=sharing" },
 ];
 
 export const doors = [
@@ -97,3 +101,18 @@ export const domainColorMap: Record<string, string> = {
   research: "var(--research)",
   project: "var(--project)",
 };
+
+export const pmExperience = [
+  { role: "Project Manager", org: "Elite Global AI", period: "Feb 2026 — Present", location: "Remote", desc: "Leading cross-functional engineering teams building multiple digital products. Coordinating sprint planning, backlog grooming, and delivery timelines across frontend, backend, and design." },
+  { role: "Project Manager / Executive VA", org: "Remote Trybe", period: "Mar 2024 — Feb 2025", location: "Lagos, NG", desc: "Managed project coordination, sprint tracking, and cross-team communication. Oversaw delivery of digital products and internal workflows." },
+  { role: "Administrative & Operations Assistant", org: "Brandaption", period: "Jun 2024 — Nov 2024", location: "USA/Saudi Arabia (Remote)", desc: "Managed executive calendars, coordinated influencer outreach, and conducted market research for data-driven campaigns." },
+  { role: "Social Media Manager", org: "Techstars UNILAG", period: "Jun 2025 — Present", location: "Lagos, NG", desc: "Managing content creation and community engagement for the UNILAG chapter of a leading global startup program." },
+];
+
+export const pmCertifications = [
+  { title: "Diploma in Project Management", issuer: "Alison" },
+  { title: "Working as a Virtual Assistant", issuer: "Alison" },
+  { title: "Career Essentials in Generative AI", issuer: "Microsoft & LinkedIn Learning" },
+  { title: "Brand Identity & Strategy", issuer: "Professional Certification" },
+];
+

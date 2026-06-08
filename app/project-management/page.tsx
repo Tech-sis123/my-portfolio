@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import SectionLabel from "@/components/SectionLabel";
 import RevealOnScroll from "@/components/RevealOnScroll";
 import SkillIcon from "@/components/SkillIcon";
-import { experience, leadership, skillGroups } from "@/lib/constants";
+import { leadership, skillGroups, pmExperience, pmCertifications } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Project Management — Esabu Blessing",
@@ -33,14 +34,34 @@ export default function PMPage() {
             </RevealOnScroll>
             <RevealOnScroll delay={0.2}>
               <div className="relative overflow-hidden" style={{ aspectRatio: "4/5", background: "var(--ink-fainter)", border: "1px solid var(--hairline)", maxWidth: 360 }}>
-                <div className="absolute inset-0 flex items-center justify-center" style={{ color: "var(--project)", fontFamily: "var(--font-jetbrains)", fontSize: "0.6rem", letterSpacing: "0.15em" }}>PM PHOTO</div>
+                <Image src="/images/pm-photo.png" alt="Project Management Profile" fill style={{ objectFit: "cover" }} />
               </div>
             </RevealOnScroll>
           </div>
         </section>
 
         <section className="py-24 border-t border-[var(--hairline)]">
-          <RevealOnScroll><SectionLabel ordinal="02" label="Tools & Toolkit" /></RevealOnScroll>
+          <RevealOnScroll><SectionLabel ordinal="02" label="Experience" /></RevealOnScroll>
+          <div className="space-y-12">
+            {pmExperience.map((exp, i) => (
+              <RevealOnScroll key={i} delay={i * 0.1}>
+                <div className="flex flex-col md:flex-row gap-4 md:gap-8 items-start">
+                  <div className="md:w-1/4 flex-shrink-0" style={{ fontFamily: "var(--font-jetbrains)", fontSize: "0.75rem", color: "var(--ink-dim)", letterSpacing: "0.05em" }}>
+                    {exp.period}
+                  </div>
+                  <div className="md:w-3/4">
+                    <h3 style={{ fontFamily: "var(--font-fraunces)", fontSize: "1.25rem", fontWeight: 400, marginBottom: "0.25rem" }}>{exp.role}</h3>
+                    <div style={{ fontFamily: "var(--font-jetbrains)", fontSize: "0.75rem", color: "var(--project)", textTransform: "uppercase", marginBottom: "0.75rem", letterSpacing: "0.05em" }}>{exp.org} · {exp.location}</div>
+                    <p style={{ fontFamily: "var(--font-bricolage)", fontSize: "0.95rem", color: "var(--ink-dim)", lineHeight: 1.6 }}>{exp.desc}</p>
+                  </div>
+                </div>
+              </RevealOnScroll>
+            ))}
+          </div>
+        </section>
+
+        <section className="py-24 border-t border-[var(--hairline)]">
+          <RevealOnScroll><SectionLabel ordinal="03" label="Tools & Toolkit" /></RevealOnScroll>
           <div className="space-y-8">
             {skillGroups.filter(g => g.label.includes("PM")).map((g, gi) => (
               <RevealOnScroll key={g.label} delay={gi * 0.07}>
@@ -54,7 +75,21 @@ export default function PMPage() {
         </section>
 
         <section className="py-24 border-t border-[var(--hairline)]">
-          <SectionLabel ordinal="02" label="Leadership & Volunteer" />
+          <RevealOnScroll><SectionLabel ordinal="04" label="Certifications" /></RevealOnScroll>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-px border border-[var(--hairline)]">
+            {pmCertifications.map((cert, i) => (
+              <RevealOnScroll key={i} delay={i * 0.08}>
+                <div className="card-hover p-6" style={{ borderRight: i % 2 === 0 ? "1px solid var(--hairline)" : "none", borderBottom: i < pmCertifications.length - 2 ? "1px solid var(--hairline)" : "none" }}>
+                  <div style={{ fontFamily: "var(--font-fraunces)", fontSize: "1.1rem", fontWeight: 300, marginBottom: "0.5rem" }}>{cert.title}</div>
+                  <div style={{ fontFamily: "var(--font-jetbrains)", fontSize: "0.7rem", color: "var(--project)", textTransform: "uppercase", letterSpacing: "0.1em" }}>{cert.issuer}</div>
+                </div>
+              </RevealOnScroll>
+            ))}
+          </div>
+        </section>
+
+        <section className="py-24 border-t border-[var(--hairline)]">
+          <SectionLabel ordinal="05" label="Leadership & Volunteer" />
           <div className="grid grid-cols-1 md:grid-cols-2 gap-px border border-[var(--hairline)]">
             {leadership.map((l, i) => (
               <RevealOnScroll key={l.org} delay={i * 0.08}>

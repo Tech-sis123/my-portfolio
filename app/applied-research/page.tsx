@@ -3,6 +3,7 @@ import Image from "next/image";
 import SectionLabel from "@/components/SectionLabel";
 import RevealOnScroll from "@/components/RevealOnScroll";
 import SkillIcon from "@/components/SkillIcon";
+import ProjectLinks from "@/components/ProjectLinks";
 import { projects, papers, skillGroups } from "@/lib/constants";
 
 export const metadata: Metadata = {
@@ -69,11 +70,34 @@ export default function ResearchPage() {
           <div className="border border-[var(--hairline)]">
             {papers.map((p, i) => (
               <RevealOnScroll key={p.title} delay={i * 0.07}>
-                <div className={`row-hover flex items-center justify-between gap-6 px-6 py-5 ${i < papers.length - 1 ? "border-b border-[var(--hairline)]" : ""}`}>
+                <div className={`row-hover flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 sm:gap-6 px-6 py-5 ${i < papers.length - 1 ? "border-b border-[var(--hairline)]" : ""}`}>
                   <span className="italic" style={{ fontFamily: "var(--font-fraunces)", fontSize: "0.95rem", fontWeight: 300, flex: 1 }}>{p.title}</span>
-                  <span className="flex-shrink-0 text-right" style={{ fontFamily: "var(--font-jetbrains)", fontSize: "0.6rem", letterSpacing: "0.1em", color: "var(--ink-faint)" }}>
-                    {p.venue} · {p.year}
-                  </span>
+                  <div className="flex items-center gap-4 flex-shrink-0">
+                    <span className="text-right" style={{ fontFamily: "var(--font-jetbrains)", fontSize: "0.6rem", letterSpacing: "0.1em", color: "var(--ink-faint)" }}>
+                      {p.venue} · {p.year}
+                    </span>
+                    {p.link && (
+                      <a href={p.link} target="_blank" rel="noopener noreferrer" className="inline-block px-3 py-1.5 border border-[var(--research)] text-[var(--research)] hover:bg-[var(--research)] hover:text-[var(--bg)] transition-colors whitespace-nowrap" style={{ fontFamily: "var(--font-jetbrains)", fontSize: "0.55rem", letterSpacing: "0.1em", textTransform: "uppercase" }}>
+                        View
+                      </a>
+                    )}
+                  </div>
+                </div>
+              </RevealOnScroll>
+            ))}
+          </div>
+        </section>
+
+        <section className="py-24 border-t border-[var(--hairline)]">
+          <RevealOnScroll><SectionLabel ordinal="04" label="Featured Projects" /></RevealOnScroll>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-px border border-[var(--hairline)]">
+            {domainProjects.map((p, i) => (
+              <RevealOnScroll key={p.title} delay={i * 0.08}>
+                <div className="card-hover p-6 h-full flex flex-col" style={{ borderRight: i % 2 === 0 ? "1px solid var(--hairline)" : "none", borderBottom: i < domainProjects.length - 2 ? "1px solid var(--hairline)" : "none" }}>
+                  <h3 className="italic mb-1" style={{ fontFamily: "var(--font-fraunces)", fontSize: "1.1rem", fontWeight: 300 }}>{p.title}</h3>
+                  <div style={{ fontFamily: "var(--font-jetbrains)", fontSize: "0.6rem", letterSpacing: "0.1em", color: "var(--research)", textTransform: "uppercase", marginBottom: "0.75rem" }}>{p.subtitle}</div>
+                  <p style={{ fontFamily: "var(--font-bricolage)", fontSize: "0.85rem", color: "var(--ink-dim)", lineHeight: 1.6, flex: 1 }}>{p.desc}</p>
+                  <div className="mt-6"><ProjectLinks github={p.github} liveUrl={p.liveUrl} accentColor="var(--research)" /></div>
                 </div>
               </RevealOnScroll>
             ))}
