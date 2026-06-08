@@ -3,6 +3,19 @@
 @tailwind utilities;
 
 :root {
+  --bg: #f5f3ef;
+  --ink: #070707;
+  --ink-dim: rgba(7, 7, 7, 0.55);
+  --ink-faint: rgba(7, 7, 7, 0.32);
+  --ink-fainter: rgba(7, 7, 7, 0.15);
+  --backend: #0891b2;
+  --hardware: #c2410c;
+  --research: #9333ea;
+  --project: #2563eb;
+  --hairline: rgba(7, 7, 7, 0.15);
+}
+
+.dark {
   --bg: #070707;
   --ink: #f5f3ef;
   --ink-dim: rgba(245, 243, 239, 0.55);

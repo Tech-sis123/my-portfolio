@@ -3,9 +3,13 @@
 import type * as ThreeTypes from "three";
 
 import { useEffect, useRef } from "react";
+import { useTheme } from "next-themes";
 
 export default function ThreeBackground() {
+  const { resolvedTheme } = useTheme();
   const mountedRef = useRef(false);
+  const sceneRef = useRef<ThreeTypes.Scene | null>(null);
+  const materialsRef = useRef<ThreeTypes.PointsMaterial[]>([]);
 
   useEffect(() => {
     if (mountedRef.current) return;
@@ -23,10 +27,13 @@ export default function ThreeBackground() {
       const renderer = new THREE.WebGLRenderer({ canvas, antialias: false, alpha: true });
       renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
       renderer.setSize(window.innerWidth, window.innerHeight);
-      renderer.setClearColor(0x070707, 1);
+      renderer.setClearColor(0x000000, 0); // Transparent background to let CSS theme show through
 
       const scene = new THREE.Scene();
-      scene.fog = new THREE.Fog(0x070707, 3.5, 11);
+      sceneRef.current = scene;
+      
+      const isLight = document.documentElement.classList.contains("light") || resolvedTheme === "light";
+      scene.fog = new THREE.Fog(isLight ? 0xf5f3ef : 0x070707, 3.5, 11);
 
       const camera = new THREE.PerspectiveCamera(70, window.innerWidth / window.innerHeight, 0.1, 20);
       camera.position.set(0, 0, 5);
@@ -62,14 +69,7 @@ export default function ThreeBackground() {
         nodeMeshes.push(halo);
       });
 
-      // Connecting lines between all node pairs
-      const lineMat = new THREE.LineBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.05 });
-      for (let i = 0; i < nodePositions.length; i++) {
-        for (let j = i + 1; j < nodePositions.length; j++) {
-          const geo = new THREE.BufferGeometry().setFromPoints([nodePositions[i], nodePositions[j]]);
-          scene.add(new THREE.Line(geo, lineMat));
-        }
-      }
+      // Connecting lines removed per user request for a cleaner, star-like aesthetic
 
       // Dust particles — primary layer
       const primaryCount = 450;
@@ -81,7 +81,9 @@ export default function ThreeBackground() {
       }
       const primaryGeo = new THREE.BufferGeometry();
       primaryGeo.setAttribute("position", new THREE.BufferAttribute(primaryPos, 3));
-      const primaryMat = new THREE.PointsMaterial({ color: 0xffffff, size: 0.012, transparent: true, opacity: 0.55 });
+      const particleColor = (document.documentElement.classList.contains("light") || resolvedTheme === "light") ? 0x070707 : 0xffffff;
+      const primaryMat = new THREE.PointsMaterial({ color: particleColor, size: 0.012, transparent: true, opacity: 0.55 });
+      materialsRef.current.push(primaryMat as unknown as ThreeTypes.PointsMaterial);
       const primaryDust = new THREE.Points(primaryGeo, primaryMat);
       scene.add(primaryDust);
 
@@ -95,7 +97,8 @@ export default function ThreeBackground() {
       }
       const secondaryGeo = new THREE.BufferGeometry();
       secondaryGeo.setAttribute("position", new THREE.BufferAttribute(secondaryPos, 3));
-      const secondaryMat = new THREE.PointsMaterial({ color: 0xffffff, size: 0.008, transparent: true, opacity: 0.25 });
+      const secondaryMat = new THREE.PointsMaterial({ color: particleColor, size: 0.008, transparent: true, opacity: 0.25 });
+      materialsRef.current.push(secondaryMat as unknown as ThreeTypes.PointsMaterial);
       scene.add(new THREE.Points(secondaryGeo, secondaryMat));
 
       // Mouse parallax
@@ -164,6 +167,21 @@ export default function ThreeBackground() {
       if (cleanup) cleanup();
     };
   }, []);
+
+  // Effect to handle theme changes dynamically
+  useEffect(() => {
+    if (!sceneRef.current || !resolvedTheme) return;
+    const isLight = resolvedTheme === "light";
+    const fogColor = isLight ? 0xf5f3ef : 0x070707;
+    const particleColor = isLight ? 0x070707 : 0xffffff;
+
+    if (sceneRef.current.fog) {
+      (sceneRef.current.fog as ThreeTypes.Fog).color.setHex(fogColor);
+    }
+    materialsRef.current.forEach((mat) => {
+      mat.color.setHex(particleColor);
+    });
+  }, [resolvedTheme]);
 
   return <canvas id="three-canvas" aria-hidden="true" />;
 }

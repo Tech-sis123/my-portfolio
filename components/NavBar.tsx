@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
+import { ThemeToggle } from "./ThemeToggle";
 
 const links = [
   { href: "/", label: "Home" },
@@ -26,7 +27,7 @@ export default function NavBar() {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled ? "backdrop-blur-md bg-[rgba(7,7,7,0.7)] border-b border-[var(--hairline)]" : ""
+        scrolled ? "backdrop-blur-md bg-[#fdfdfc]/80 dark:bg-[#070707]/80 border-b border-[var(--hairline)]" : ""
       }`}
     >
       <nav className="max-w-[1200px] mx-auto px-6 h-14 flex items-center justify-between">
@@ -38,7 +39,7 @@ export default function NavBar() {
           >
             EB
             <span className="inline-block w-1 h-1 rounded-full bg-[var(--backend)] animate-[pulse-dot_2.5s_ease-in-out_infinite]" />
-            ESABU.DEV / 26
+            ESABU.TECH / 26
           </span>
         </Link>
 
@@ -53,6 +54,7 @@ export default function NavBar() {
               {l.label}
             </Link>
           ))}
+          <ThemeToggle />
         </div>
 
         {/* Hamburger */}
@@ -69,7 +71,7 @@ export default function NavBar() {
 
       {/* Mobile menu */}
       {open && (
-        <div className="md:hidden border-t border-[var(--hairline)] bg-[rgba(7,7,7,0.95)] backdrop-blur-md">
+        <div className="md:hidden border-t border-[var(--hairline)] bg-[#fdfdfc]/95 dark:bg-[#070707]/95 backdrop-blur-md">
           {links.map((l) => (
             <Link
               key={l.href}
@@ -80,6 +82,9 @@ export default function NavBar() {
               {l.label}
             </Link>
           ))}
+          <div className="px-6 py-4 border-b border-[var(--hairline)]">
+            <ThemeToggle />
+          </div>
         </div>
       )}
     </header>

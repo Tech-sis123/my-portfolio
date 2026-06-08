@@ -5,6 +5,7 @@ import "./globals.css";
 import NavBar from "@/components/NavBar";
 import ThreeBackground from "@/components/ThreeBackground";
 import Footer from "@/components/Footer";
+import { ThemeProvider } from "@/components/ThemeProvider";
 
 const fraunces = Fraunces({
   subsets: ["latin"],
@@ -33,7 +34,7 @@ export const metadata: Metadata = {
     title: "Esabu Blessing — Computer Engineer",
     description:
       "Backend, Hardware, Research, Project Management. Lagos, Nigeria.",
-    url: "https://esabu.dev",
+    url: "https://esabu.tech",
     siteName: "Esabu Blessing",
     locale: "en_US",
     type: "website",
@@ -51,17 +52,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
         className={`${fraunces.variable} ${jetbrains.variable} ${bricolage.variable}`}
       >
-        <ThreeBackground />
-        <div className="content-layer min-h-screen">
-          <NavBar />
-          <main>{children}</main>
-          <Footer />
-        </div>
-        <Analytics />
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <ThreeBackground />
+          <div className="content-layer min-h-screen">
+            <NavBar />
+            <main>{children}</main>
+            <Footer />
+          </div>
+          <Analytics />
+        </ThemeProvider>
       </body>
     </html>
   );

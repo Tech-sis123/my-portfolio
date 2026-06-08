@@ -31,8 +31,8 @@ export default function Home() {
   return (
     <>
       {/* HERO */}
-      <section className="relative min-h-screen flex flex-col justify-center px-6 pt-20 pb-12 max-w-[1200px] mx-auto">
-        <div style={{ fontFamily: "var(--font-jetbrains)", fontSize: "0.65rem", letterSpacing: "0.2em", color: "var(--ink-faint)", textTransform: "uppercase", marginBottom: "2rem" }}>
+      <section className="relative min-h-[75vh] flex flex-col justify-center px-6 pt-12 pb-12 max-w-[1200px] mx-auto">
+        <div style={{ fontFamily: "var(--font-jetbrains)", fontSize: "0.65rem", letterSpacing: "0.2em", color: "var(--ink-faint)", textTransform: "uppercase", marginBottom: "1.5rem" }}>
           Lagos, Nigeria · Available Q3 2026
         </div>
 
@@ -54,7 +54,7 @@ export default function Home() {
         </div>
 
         {/* Domain legend */}
-        <div className="flex flex-wrap items-center gap-6 mt-12 pt-6 border-t border-[var(--hairline)]">
+        <div className="flex flex-wrap items-center gap-6 mt-8 pt-4 border-t border-[var(--hairline)]">
           <div className="flex flex-wrap gap-4">
             {(["backend", "hardware", "research", "project"] as const).map((d) => (
               <DomainDot key={d} domain={d} label={d === "project" ? "Project Mgmt" : d} />
