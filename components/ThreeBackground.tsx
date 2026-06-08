@@ -38,38 +38,7 @@ export default function ThreeBackground() {
       const camera = new THREE.PerspectiveCamera(70, window.innerWidth / window.innerHeight, 0.1, 20);
       camera.position.set(0, 0, 5);
 
-      // Domain colors (muted)
-      const domainColors = [0x22d3ee, 0xfb923c, 0xc084fc, 0x60a5fa];
-      const nodePositions = [
-        new THREE.Vector3(-1.2, 0.8, -0.5),
-        new THREE.Vector3(1.2, 0.8, 0.3),
-        new THREE.Vector3(-0.5, -1.1, 0.4),
-        new THREE.Vector3(0.8, -0.8, -0.3),
-      ];
-
-      const nodeMeshes: ThreeTypes.Mesh[] = [];
-
-      // Nodes: small core + halo
-      nodePositions.forEach((pos, i) => {
-        const color = domainColors[i];
-
-        // Core
-        const coreGeo = new THREE.SphereGeometry(0.04, 8, 8);
-        const coreMat = new THREE.MeshBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.4 });
-        const core = new THREE.Mesh(coreGeo, coreMat);
-        core.position.copy(pos);
-        scene.add(core);
-
-        // Halo
-        const haloGeo = new THREE.SphereGeometry(0.22, 12, 12);
-        const haloMat = new THREE.MeshBasicMaterial({ color, transparent: true, opacity: 0.06, side: THREE.BackSide });
-        const halo = new THREE.Mesh(haloGeo, haloMat);
-        halo.position.copy(pos);
-        scene.add(halo);
-        nodeMeshes.push(halo);
-      });
-
-      // Connecting lines removed per user request for a cleaner, star-like aesthetic
+      // Nodes and connecting lines removed per user request for a cleaner, star-like aesthetic
 
       // Dust particles — primary layer
       const primaryCount = 450;
@@ -139,13 +108,7 @@ export default function ThreeBackground() {
         primaryDust.rotation.y = t * 0.006;
         primaryDust.rotation.x = t * 0.003;
 
-        // Pulse nodes
-        nodeMeshes.forEach((halo, i) => {
-          const phase = (i / nodeMeshes.length) * Math.PI * 2;
-          const s = 1 + Math.sin(t * 0.7 + phase) * 0.08;
-          halo.scale.setScalar(s);
-          (halo.material as ThreeTypes.MeshBasicMaterial).opacity = 0.06 + Math.sin(t * 0.7 + phase) * 0.02;
-        });
+        // (Node pulsing removed)
 
         renderer.render(scene, camera);
       }

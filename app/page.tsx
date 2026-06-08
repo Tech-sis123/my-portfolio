@@ -31,7 +31,7 @@ export default function Home() {
   return (
     <>
       {/* HERO */}
-      <section className="relative min-h-[75vh] flex flex-col justify-center px-6 pt-12 pb-12 max-w-[1200px] mx-auto">
+      <section className="relative flex flex-col justify-center px-6 pt-32 pb-12 max-w-[1200px] mx-auto">
         <div style={{ fontFamily: "var(--font-jetbrains)", fontSize: "0.65rem", letterSpacing: "0.2em", color: "var(--ink-faint)", textTransform: "uppercase", marginBottom: "1.5rem" }}>
           Lagos, Nigeria · Available Q3 2026
         </div>

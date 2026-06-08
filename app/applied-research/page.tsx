@@ -17,7 +17,7 @@ export default function ResearchPage() {
 
   return (
     <>
-      <section className="relative min-h-[70vh] flex flex-col justify-center px-6 pt-32 pb-12 max-w-[1200px] mx-auto">
+      <section className="relative flex flex-col justify-center px-6 pt-32 pb-12 max-w-[1200px] mx-auto">
         <h1 className="overflow-hidden" style={{ fontFamily: "var(--font-fraunces)", fontWeight: 300, lineHeight: 1.05 }}>
           <span className="block italic" style={{ fontSize: "clamp(3rem, 8vw, 7rem)", color: "var(--research)" }}>Applied</span>
           <span className="block" style={{ fontSize: "clamp(3rem, 8vw, 7rem)" }}>Research.</span>
