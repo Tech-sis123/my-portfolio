@@ -150,37 +150,11 @@ export default function Home() {
           </div>
         </section>
 
-        {/* 03 FEATURED WINS */}
-        <section className="py-24 border-t border-[var(--hairline)]">
-          <RevealOnScroll>
-            <SectionLabel ordinal="03" label="Featured Wins" />
-          </RevealOnScroll>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 border border-[var(--hairline)]">
-            {wins.map((w, i) => (
-              <RevealOnScroll key={w.title} delay={i * 0.07}>
-                <div
-                  className={`p-6 card-hover ${i < 3 ? "border-b" : ""} ${i % 3 !== 2 ? "border-r" : ""}`}
-                  style={{ borderColor: "var(--hairline)" }}
-                >
-                  <div className="flex items-center gap-2 mb-3">
-                    <DomainDot domain={w.domain} />
-                    <span style={{ fontFamily: "var(--font-jetbrains)", fontSize: "0.6rem", letterSpacing: "0.12em", color: "var(--ink-faint)", textTransform: "uppercase" }}>
-                      {w.year} · {w.venue}
-                    </span>
-                  </div>
-                  <p style={{ fontFamily: "var(--font-fraunces)", fontSize: "1rem", fontWeight: 300, lineHeight: 1.4 }}>
-                    {w.title}
-                  </p>
-                </div>
-              </RevealOnScroll>
-            ))}
-          </div>
-        </section>
 
-        {/* 04 SKILLS */}
+        {/* 03 SKILLS */}
         <section className="py-24 border-t border-[var(--hairline)]">
           <RevealOnScroll>
-            <SectionLabel ordinal="04" label="Skills · Toolkit" />
+            <SectionLabel ordinal="03" label="Skills · Toolkit" />
           </RevealOnScroll>
           <div className="space-y-8">
             {skillGroups.map((g, gi) => (
@@ -202,10 +176,10 @@ export default function Home() {
           </div>
         </section>
 
-        {/* 05 EXPERIENCE */}
+        {/* 04 EXPERIENCE */}
         <section className="py-24 border-t border-[var(--hairline)]">
           <RevealOnScroll>
-            <SectionLabel ordinal="05" label="Experience" />
+            <SectionLabel ordinal="04" label="Experience" />
           </RevealOnScroll>
           <div className="space-y-0">
             {experience.map((e, i) => (
@@ -232,10 +206,10 @@ export default function Home() {
           </div>
         </section>
 
-        {/* 06 FEATURED PROJECTS */}
+        {/* 05 FEATURED PROJECTS */}
         <section className="py-24 border-t border-[var(--hairline)]">
           <RevealOnScroll>
-            <SectionLabel ordinal="06" label="Featured Projects" />
+            <SectionLabel ordinal="05" label="Featured Projects" />
           </RevealOnScroll>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-px border border-[var(--hairline)]">
             {projects.filter(p => !("hideOnHome" in p && p.hideOnHome)).map((p, i, arr) => (
@@ -254,10 +228,10 @@ export default function Home() {
           </div>
         </section>
 
-        {/* 07 LEADERSHIP */}
+        {/* 06 LEADERSHIP */}
         <section className="py-24 border-t border-[var(--hairline)]">
           <RevealOnScroll>
-            <SectionLabel ordinal="07" label="Leadership & Volunteer" />
+            <SectionLabel ordinal="06" label="Leadership & Volunteer" />
           </RevealOnScroll>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-px border border-[var(--hairline)]">
             {leadership.map((l, i) => (
@@ -272,10 +246,10 @@ export default function Home() {
           </div>
         </section>
 
-        {/* 08 AWARDS */}
+        {/* 07 AWARDS */}
         <section className="py-24 border-t border-[var(--hairline)]">
           <RevealOnScroll>
-            <SectionLabel ordinal="08" label="Awards & Honors" />
+            <SectionLabel ordinal="07" label="Awards & Honors" />
           </RevealOnScroll>
           <div className="border border-[var(--hairline)]">
             {awards.map((a, i) => (
@@ -290,10 +264,10 @@ export default function Home() {
           </div>
         </section>
 
-        {/* 09 PUBLICATIONS */}
+        {/* 08 PUBLICATIONS */}
         <section className="py-24 border-t border-[var(--hairline)]">
           <RevealOnScroll>
-            <SectionLabel ordinal="09" label="Publications" />
+            <SectionLabel ordinal="08" label="Publications" />
           </RevealOnScroll>
           <div className="border border-[var(--hairline)]">
             {papers.map((p, i) => (
@@ -309,10 +283,10 @@ export default function Home() {
           </div>
         </section>
 
-        {/* 10 GO DEEPER */}
+        {/* 09 GO DEEPER */}
         <section className="py-24 border-t border-[var(--hairline)]">
           <RevealOnScroll>
-            <SectionLabel ordinal="10" label="Go Deeper" />
+            <SectionLabel ordinal="09" label="Go Deeper" />
           </RevealOnScroll>
           <div className="mb-10">
             <h2 style={{ fontFamily: "var(--font-fraunces)", fontSize: "clamp(1.8rem, 4vw, 2.8rem)", fontWeight: 300 }}>
@@ -366,10 +340,10 @@ export default function Home() {
           </div>
         </section>
 
-        {/* 11 LET'S CONNECT */}
+        {/* 10 LET'S CONNECT */}
         <section className="py-24 border-t border-[var(--hairline)]">
           <RevealOnScroll>
-            <SectionLabel ordinal="11" label="Let's Connect" />
+            <SectionLabel ordinal="10" label="Let's Connect" />
           </RevealOnScroll>
           <div className="mb-10">
             <h2 style={{ fontFamily: "var(--font-fraunces)", fontSize: "clamp(1.8rem, 4vw, 2.8rem)", fontWeight: 300 }}>
