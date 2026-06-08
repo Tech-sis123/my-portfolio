@@ -15,7 +15,6 @@ export const metadata: Metadata = {
 
 import {
   stats,
-  wins,
   skillGroups,
   experience,
   projects,

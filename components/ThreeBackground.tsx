@@ -129,6 +129,7 @@ export default function ThreeBackground() {
     return () => {
       if (cleanup) cleanup();
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // Effect to handle theme changes dynamically
